@@ -23,6 +23,7 @@ redis:
 
 session:
   expires_time: 604800
+  key_pairs: be10c141-2ca1-414f-9216-ece26af215f9
 
 email:
   auth_code:

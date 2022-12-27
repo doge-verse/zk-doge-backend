@@ -42,7 +42,8 @@ type Config struct {
 	} `mapstructure:"redis"`
 
 	Session struct {
-		ExpiresTime int64 `mapstructure:"expires_time"`
+		ExpiresTime int64  `mapstructure:"expires_time"`
+        KeyPairs    string `mapstructure:"key_pairs"`
 	} `mapstructure:"session"`
 }
 

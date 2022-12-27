@@ -6,14 +6,13 @@ import (
 	"github.com/doge-verse/zk-doge-backend/api/response"
 	"github.com/doge-verse/zk-doge-backend/pkg/cache"
 	"github.com/doge-verse/zk-doge-backend/pkg/conf"
-	"time"
+    "time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cast"
-	"github.com/spf13/viper"
 )
 
 var (
@@ -30,7 +29,7 @@ type JWT struct {
 
 func NewJWT() *JWT {
 	return &JWT{
-		[]byte(viper.GetString("session.keyPairs")),
+		[]byte(conf.Cfg.Session.KeyPairs),
 	}
 }
 
