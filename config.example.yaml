@@ -1,0 +1,30 @@
+database:
+  dialect: mysql
+  user: root
+  password:
+  host:
+  port:
+  dbname: zk-doge
+  max_idle_conn: 10
+  max_open_conn: 100
+  debug: true
+  auto_migrate: false
+
+gin:
+  mode: debug
+  listen: ":9999"
+
+redis:
+  network: tcp
+  address:
+  port: 6379
+  db: 11
+  password:
+
+session:
+  expires_time: 604800
+
+email:
+  auth_code:
+  from:
+  username: 
