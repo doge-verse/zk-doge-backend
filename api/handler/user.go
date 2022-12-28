@@ -4,7 +4,6 @@ import (
 	"github.com/doge-verse/zk-doge-backend/api/request"
 	"github.com/doge-verse/zk-doge-backend/api/response"
 	"github.com/doge-verse/zk-doge-backend/internal/service/user"
-	"github.com/doge-verse/zk-doge-backend/models"
 	"github.com/gin-gonic/gin"
 )
 
@@ -31,22 +30,5 @@ func UpdateEmail(c *gin.Context) {
 	}
 	response.Success(c, &response.RespResult{
 		Data: nil,
-	})
-}
-
-// Register .
-func Register(c *gin.Context) {
-	param := models.User{}
-	if err := c.ShouldBindQuery(&param); err != nil {
-		response.Fail(c, err)
-		return
-	}
-	userInfo, err := user.Srv.UserRegister(&param)
-	if err != nil {
-		response.Fail(c, err)
-		return
-	}
-	response.Success(c, &response.RespResult{
-		Data: userInfo,
 	})
 }

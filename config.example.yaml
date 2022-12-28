@@ -10,6 +10,13 @@ database:
   debug: true
   auto_migrate: false
 
+rpc:
+  mainnet_polygon: wss://polygon-mainnet.g.alchemy.com/v2/project_id
+  mainnet_eth: wss://mainnet.infura.io/ws/v3/project_id
+  testnet_goerli: wss://goerli.infura.io/ws/v3/project_id
+  testnet_wallaby: wss://wss.wallaby.node.glif.io/apigw/lotus/rpc/v0
+  testnet_mumbai: wss://matic-mumbai.chainstacklabs.com
+
 gin:
   mode: debug
   listen: ":9999"

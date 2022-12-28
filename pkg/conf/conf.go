@@ -20,6 +20,14 @@ type Config struct {
 		AuthCode string `mapstructure:"auth_code"`
 	} `mapstructure:"mail"`
 
+	RPC struct {
+		MainnetEth     string `mapstructure:"mainnet_eth"`
+		MainnetPolygon string `mapstructure:"mainnet_polygon"`
+		TestnetGoerli  string `mapstructure:"testnet_goerli"`
+		TestnetWallaby string `mapstructure:"testnet_wallaby"`
+		TestnetWMumbai string `mapstructure:"testnet_mumbai"`
+	} `mapstructure:"rpc"`
+
 	Database struct {
 		Dialect     string `mapstructure:"dialect"`
 		Host        string `mapstructure:"host"`
@@ -43,7 +51,7 @@ type Config struct {
 
 	Session struct {
 		ExpiresTime int64  `mapstructure:"expires_time"`
-        KeyPairs    string `mapstructure:"key_pairs"`
+		KeyPairs    string `mapstructure:"key_pairs"`
 	} `mapstructure:"session"`
 }
 

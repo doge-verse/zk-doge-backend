@@ -6,8 +6,9 @@ import (
 	"github.com/doge-verse/zk-doge-backend/api/request"
 	"github.com/doge-verse/zk-doge-backend/api/response"
 	"github.com/doge-verse/zk-doge-backend/internal/dao"
-	user2 "github.com/doge-verse/zk-doge-backend/internal/service/user"
+	"github.com/doge-verse/zk-doge-backend/internal/service/user"
 	"github.com/doge-verse/zk-doge-backend/models"
+	"github.com/doge-verse/zk-doge-backend/util"
 
 	"github.com/gin-gonic/gin"
 )
@@ -26,14 +27,18 @@ func Login(c *gin.Context) {
 		response.Fail(c, fmt.Errorf("param error"))
 		return
 	}
-	userInfo, err := user2.Srv.GetUserByQuery(dao.Query{
+	if !util.CheckAddr(param.Address, param.Signature, param.SignData) {
+		response.Fail(c, fmt.Errorf("signature fail"))
+		return
+	}
+	userInfo, err := user.Srv.GetUserByQuery(dao.Query{
 		Address: param.Address,
 	})
 	if err != nil {
 		newUser := &models.User{
 			Address: param.Address,
 		}
-		userInfo, err = user2.Srv.UserRegister(newUser)
+		userInfo, err = user.Srv.UserRegister(newUser)
 		if err != nil {
 			response.Fail(c, err)
 			return

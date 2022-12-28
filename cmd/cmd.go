@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"github.com/doge-verse/zk-doge-backend/pkg/blockchain"
 	"github.com/doge-verse/zk-doge-backend/pkg/cache"
 	"github.com/doge-verse/zk-doge-backend/pkg/conf"
 	"github.com/doge-verse/zk-doge-backend/pkg/sql"
@@ -33,8 +34,9 @@ func NewRootCmd() *cobra.Command {
 		PersistentPreRun: func(cmd *cobra.Command, args []string) {
 			conf.LoadConfig(cfgFile)
 			logInit(logLevel)
-			//sql.Init()
-			//cache.Init()
+			blockchain.Init()
+			sql.Init()
+			cache.Init()
 		},
 	}
 
